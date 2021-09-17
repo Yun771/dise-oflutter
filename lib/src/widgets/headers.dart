@@ -230,3 +230,43 @@ class _HeaderWavePainter extends CustomPainter {
     return true;
   }
 }
+
+class HeaderClipPainter extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: double.infinity,
+      width: double.infinity,
+      child: CustomPaint(
+        painter: _HeaderClipPainter(),
+      ),
+    );
+  }
+}
+
+class _HeaderClipPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = new Paint();
+
+    paint
+      ..color = Color(0xff615AAB)
+      ..style = PaintingStyle.fill
+      ..strokeWidth = 10;
+
+    final path = new Path();
+
+    path.moveTo(size.width * 0.15, 0);
+    path.lineTo(size.width * 0.15, size.height * 0.35);
+    path.lineTo(size.width * 0.20, size.height * 0.30);
+    path.lineTo(size.width * 0.25, size.height * 0.35);
+    path.lineTo(size.width * 0.25, 0);
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
+  }
+}
